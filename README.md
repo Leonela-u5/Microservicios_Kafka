@@ -1,2 +1,2 @@
 # Microservicios_Kafka
-Sistema de microservicios con Spring Boot, Eureka, Gateway y Kafka. Incluye clientes, productos, pedidos y notificaciones. Implementa comunicación REST y asíncrona mediante eventos en Kafka, simulando una arquitectura tipo e-commerce distribuida.
+Microservicios_Kafka es un sistema distribuido desarrollado con Spring Boot, Spring Cloud Eureka, Spring Cloud Gateway y Apache Kafka. Implementa una arquitectura basada en microservicios para la gestión de clientes, productos, pedidos y notificaciones. Utiliza comunicación REST para las solicitudes entre servicios y mensajería asíncrona mediante eventos Kafka, permitiendo una integración desacoplada, escalable y similar a la utilizada en plataformas modernas de comercio electrónico.
