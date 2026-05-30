@@ -6,10 +6,25 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaPedidoConsumer {
 
-    @KafkaListener(topics = "pedidos-topic", groupId = "productos-group")
-    public void consumirPedido(String mensaje) {
+    private final ProductoRepository productoRepository;
 
-        System.out.println("📦 Pedido recibido en productos: " + mensaje);
-        System.out.println("📉 Stock actualizado automáticamente");
+    public KafkaPedidoConsumer(ProductoRepository productoRepository) {
+        this.productoRepository = productoRepository;
+    }
+
+    @KafkaListener(topics = "pedidos-topic")
+    public void actualizarStock(String mensaje) {
+
+        Producto producto = productoRepository.findById(1L).orElse(null);
+
+        if (producto != null) {
+
+            producto.setStock(producto.getStock() - 1);
+
+            productoRepository.save(producto);
+
+            System.out.println("📉 Stock actualizado automáticamente");
+            System.out.println("Stock actual: " + producto.getStock());
+        }
     }
 }
